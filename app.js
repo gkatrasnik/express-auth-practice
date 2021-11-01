@@ -1,5 +1,5 @@
 /////// app.js
-
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
@@ -9,8 +9,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
-const mongoDb =
-  "mongodb+srv://gkatrasnik:canyon1995@cluster0.no8k3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoDb = process.env.MONGO_URL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
